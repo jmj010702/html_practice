@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html form</title>
+</head>
+
+<body>
+    <!-- 1) json => {name:"hong", email:"hpng@aaa"}
+     2) x-www-urlencoded => name=hong&email=ggh@fff
+     3) multipart/form-data => name=hong&email=www@aaa&profileimage :(binary file)-->
+    <h2>회원가입 form 태그 예제</h2>
+    <!-- action에는 form태그 안에 input박스의 데이터들이 전솔될 서버의 url주소 -->
+    <!--form태그의 인코딩 타입 : 1) url인코딩 방식(텍스트만) 2) multipart/form-data방식(이미지포함) -->
+    <!-- url인코딩과 form-data형식 : name=hong&email=aaa@aaa -->
+    <!-- json : {name : "hong" , email: "eee@amm"} -->
+    <!-- json 형식은 순수 html방식만으론 불가하고 js를 통해 조립해야됨  -->
+    <form action="https://naver.com" method="post" enctype="multipart/form-data">
+        <!-- <form action="http://localhost:8080/" method=""> -->
+        <div>
+            <!-- label for 구문은 input박스의 id값을 찾아 매핑 -->
+            <label for="username">이름 : </label>
+            <!-- 해당 입력값의 키값 이름은 name이다라는 뜻  -->
+            <input type="text" id="username" name="name=name">
+        </div>
+        <div>
+            <!-- 해당 입력값의 키값 이름은 email이다라는 뜻  -->
+            이메일 : <input type="email" name="name=email">
+        </div>
+        <div>
+            <!-- 해당 입력값의 키값 이름은 password이다라는 뜻  -->
+            비밀번호 : <input type="password" name="name = password">
+        </div>
+        <div>
+            <!-- size는 input박스의 크기고 maxlength는 입력 가능한 글자수 제한이다 -->
+            <!-- 주소 : <input type="text" size="40" maxlength="40" readonly> -->
+            <!-- 주소 : <input type="text" size="40" maxlength="40" > -->
+            <!-- readonly : 수정 불가(서버로 전송) disabled : 수정 불가(서버로 전송X) -->
+            주소 : <input type="text" size="40" maxlength="40">
+        </div>
+        <div>
+            <!-- email=hong@naver.com&gender=male 형태로 서버로 전송됨  -->
+            성별 : <input type="radio" name="gender" value="male"> 남성
+            <input type="radio" name="gender" value="female" checked> 여성
+        </div>
+        <div>
+            관심사항 :
+            <!-- 체크박스의 경우 키 [v1,v2,v3...] 형태로 담김 -->
+            <input type="checkbox" name="interest" value="sports"> 스포츠
+            <input type="checkbox" name="interest" value="music"> 음악
+            <input type="checkbox" name="interest" value="reading"> 독서
+        </div>
+        <div>
+            생년월일 :
+            <!-- datetime-local같이 날짜형태로 데이터 전송을 할경우 java에서는 Localdatetime 메서드 사용해서 파싱하면 좋음 -->
+            <input type="datetime-local" name="birthday">
+        </div>
+        <div>
+            나이 : <input type="number" name="age">
+        </div>
+        <div>
+            유저선택 :
+            <select name="role">
+                <option value="admin">관리자</option>
+                <option value="user">일반유저</option>
+                <option value="guest">방문자</option>
+            </select>
+        </div>
+        <div>
+            증명사진 : <input type="file" name="profile_image"  accept="image/*">
+        </div>
+        <div>
+            <!-- form태그에서 제출방법 2가지 1)input태그 2)button태그(더 많이 씀)-->
+            자기소개 : <textarea name="resume" rows="5" cols="30" placeholder="자기소개를 입력해주세요. "></textarea>
+                <button type="submit" value="제출"> 제출</button>
+        </div>
+        <div>
+            <input type="submit" value="제출">
+        </div>
+    </form>
+</body>
+</html>  

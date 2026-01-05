@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기 form</title>
+</head>
+<!-- 글쓰기 form 생성 실습 -->
+<!-- 제목, 내용입력(사이즈 넉넉하게), 예약여부(yes,no), 예약등록 시간 -->
+
+<body>
+    <form action="https://localhost:8080" method="post" enctype="application/x-www-form-urlencoded">
+        <Caption>글쓰기</Caption>
+        <div>
+            <label for="title">제목 : </label>
+             <input type="text" name="name=title" id="title" style="width: 6cm;">
+        </div>
+        <div style="display: flex;">
+            내용입력 :
+            <textarea name="contents" rows="10" cols="30" placeholder="내용을 입력해주세요"></textarea>
+        </div>
+        <div>
+            예약 여부 :
+            <input type="radio" name="reservation" value="yes"> yes
+            <input type="radio" name="reservation" value="no" checked> no
+        </div>
+        <div>
+            예약등록시간 :
+            <input type="datetime-local" name="reservation_time">
+        </div>
+        <div>
+            <button type="reset"> 초기화 </button>
+            <button type="submit" value="제출">제출</button>
+        </div>
+    </form>
+</body>
+
+</html>
