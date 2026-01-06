@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 및 Link와 Script 적용 방법 소개</title>
+    <style>
+        /* 태그 선택자 */
+        li {
+            color: palevioletred;
+        }
+        /* 클래스 선택자 */
+        .c1 {
+            font-size: 18px;
+            color: orange;
+        }
+        .c2 {
+            text-decoration: underline;
+        }
+        /* 아이디 선택자 */
+        #i1 {
+            color: gray;
+            font-weight: bold;
+        }
+        /* 자식 선택자 */
+        div > p {
+            color: green;
+        }
+        div  section p {
+            color: purple;
+        }
+    </style>
+    <link rel="stylesheet" href="css/myStyle.css">
+    <script>
+        const update = () => {
+            alert('update 함수 실행');
+        }
+        const update2 = () => {
+            document.getElementById("update2").innerHTML = "내용이 변경되었습니다.😍😍😍";
+        }
+        document.getElementById("load1").innerHTML = "head에서 선언된 스크립트가 실행되었습니다.";
+    </script>
+</head>
+<body>
+    <!-- 📍 CSS(Cascading Style Sheets) : HTML 요소의 스타일(디자인, 레이아웃 등)을 정의하는 스타일시트 언어
+        * HTML과 분리되어 작성되며, 유지보수 및 재사용성 향상에 도움
+        * 선택자(selector) : 스타일을 적용할 HTML 요소를 지정
+        * 속성(property) : 스타일의 종류를 지정 (예: color, font-size, margin 등)
+        * 값(value) : 속성에 적용할 구체적인 스타일 값 지정 (예: red, 16px, 10px 등)
+    -->
+    <!-- 📍 CSS 스타일 적용 방법 
+        * 인라인 스타일 : HTML 요소에 style 속성을 사용하여 직접 스타일을 적용
+            * 장점 : 특정 요소에 빠르게 스타일 적용 가능
+            * 단점 : 유지보수 어려움, 재사용성 낮음 
+        * 내부 스타일 시트 : HTML 문서의 head 태그 내에 style 태그를 사용하여 스타일 정의
+            * 장점 : 한 문서 내에서 여러 요소에 스타일 적용 가능
+            * 단점 : 다른 문서에서 재사용 불가  
+        * 외부 스타일 시트 : 별도의 .css 파일에 스타일 정의 후, HTML 문서의 head 태그 내에 link 태그를 사용하여 연결
+            * 장점 : 여러 문서에서 재사용 가능, 유지보수 용이
+            * 단점 : 외부 파일 로드로 인한 추가 HTTP 요청 발생
+    -->
+    <!--📍 선택자 종류
+        * 태그 선택자 : HTML 태그에 스타일 적용 (예: p { color: red; })
+        * 클래스 선택자 : class 속성에 스타일 적용 (예: .classname { font-size: 16px; })
+        * 아이디 선택자 : id 속성에 스타일 적용 (예: #idname { margin: 10px; })
+        * 그룹 선택자 : 여러 선택자에 동일한 스타일 적용 (예: h1, h2, h3 { text-align: center; })
+        * 자손 선택자 : 특정 요소의 자손 요소에 스타일 적용 (예: div p { color: blue; })
+        * 자식 선택자 : 특정 요소의 직계 자식 요소에 스타일 적용 (예: ul > li { list-style: none; })
+        * 속성 선택자 : 특정 속성을 가진 요소에 스타일 적용 (예: a[href^="https"] { color: green; })
+    -->
+
+    <h2>디자인 적용</h2>
+    <h4 style="color: green;">디자인 적용 방법(1) : 인라인 스타일</h4>
+    
+    <h4>디자인 적용 방법(2) : 내부 스타일 시트</h4>
+    <ol>
+        <li>태그 선택자 적용 예시</li>
+        <li class="c1">클래스 선택자 적용 예시</li>
+        <li id="i1" class="c1">아이디 선택자 적용 예시</li>
+        <li class="c1 c2">클래스 중첩 적용 예시</li>
+    </ol>
+    
+    <h4>디자인 적용 방법(3) : 외부 스타일</h4>
+    <ol>
+        <li class="c3">외부 스타일 적용 예시</li>
+    </ol>
+
+    <hr/>
+
+    <h2>선택자의 이해</h2>
+    <h4>자식선택자</h4>
+    <div>
+        <p>나는 div의 자식 요소인 p 태그입니다.</p>
+        <section>
+            <p>나는 div의 자손 요소인 p 태그입니다.</p>
+        </section>  
+    </div>
+
+    <hr/>
+    <h2>JavaScript 적용</h2>
+    <!--📍 Javascript 적용 방법
+        * 인라인 이벤트 핸들러 : HTML 요소에 직접 이벤트 속성을 사용하여 JavaScript 코드 작성
+            * 장점 : 특정 요소에 빠르게 이벤트 처리 가능
+            * 단점 : 유지보수 어려움, 재사용성 낮음 
+        * 내부 스크립트 : HTML 문서의 head 또는 body 태그 내에 script 태그를 사용하여 JavaScript 코드 작성
+            * 장점 : 한 문서 내에서 여러 요소에 이벤트 처리 가능
+            * 단점 : 다른 문서에서 재사용 불가
+        * 외부 스크립트 : 별도의 .js 파일에 JavaScript 코드 작성 후, HTML 문서의 head 또는 body 태그 내에 script 태그를 사용하여 연결
+            * 장점 : 여러 문서에서 재사용 가능, 유지보수 용이
+            * 단점 : 외부 파일 로드로 인한 추가 HTTP 요청 발생
+    -->
+
+    <h4>JavaScript 적용 방법(1) : 인라인 이벤트 핸들러</h4>
+    <button onclick="alert('alert 인라인 이벤트 핸들러 실행')">인라인 적용 버튼</button><br/><br/>
+
+    <h4>JavaScript 적용 방법(2) : 내부 스크립트</h4>
+    <button onclick="update()">내부 스크립트 적용 버튼 1</button><br/><br/>
+    <button onclick="update2()">내부 스크립트 적용버튼 2 - 내용 변경 (이벤트핸들러 정의 위치: head)</button>
+    <p id="update2">변경될 내용</p>
+    <button onclick="update3()">내부 스크립트 적용버튼 2 - 내용 변경 (이벤트핸들러 정의 위치: body)</button>
+    <p id="update3">변경될 내용</p>
+    <script>
+        const update3 = () => {
+            document.getElementById("update3").innerHTML = "내용이 변경되었습니다.😀😀😀";
+        }
+    </script>
+
+    <h4>JavaScript 적용 방법(3) : 외부 스크립트</h4>
+    <button onclick="onClickUpdate()">외부 스크립트 적용 버튼 1 - 변경</button>
+    <button onclick="onClickRollback()">외부 스크립트 적용 버튼 1 - 원복</button>
+    <p class="onclick-contents">변경 전</p>
+
+    <button onclick="toggleUpdate()">외부 스크립트 적용 버튼 2</button>
+    <p id="externalFunc-update">변경될 내용✅</p>
+    <p id="externalFunc-rollback" style="display: none;">원복할 내용👍</p>
+
+    <script src="js/myJs.js"></script>
+
+
+    <hr/>
+    <h2>JavaScript 로드 순서</h2>
+    <!-- html에서 javascript 선언 방법의 차이
+         * html 문서는 상단의 head부터 순차적으로 실행되고, 그에 따라 head의 script와 body의 script가 실행 순서가 달라짐 
+         * head에서 선언하는 경우 : HTML 문서가 로드되기 전에 스크립트가 로드되고 실행됨. 따라서 DOM 요소에 접근하려면 DOMContentLoaded 이벤트를 사용하거나, 스크립트를 body 끝부분에 배치해야 함.
+         * body에서 선언하는 경우 : HTML 문서가 로드된 후에 스크립트가 로드되고 실행됨. 따라서 DOM 요소에 바로 접근 가능.    
+    -->
+    <h4>head에서 스크립트 선언</h4>
+    <!-- 변경 X -->
+    <p id="load1">로드순서 확인용</p>
+    <h4>body에서 스크립트 선언</h4>
+    <!-- 변경 O -->
+    <p id="load2">로드순서 확인용</p>
+
+    <script>
+        document.getElementById("load2").innerHTML = "body에서 선언된 스크립트가 실행되었습니다.";
+    </script>
+</body>
+</html>

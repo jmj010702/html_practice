@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css basic실습</title>
+</head>
+
+<body>
+    <h2>문자에 대한 설정 </h2>
+    <p style="font-style: italic;">font style</p>
+    <p style="font-family: Arial, Helvetica, sans-serif;">font family</p>
+    <p style="font-size: 30px;">font size</p>
+
+    <h2>글꼴의 상대 크기</h2>
+    <!-- html에서 별도의 글자크기에 대한 설정이 없으면 대략 16px -->
+    <p>부모 글자의 원래 크기</p>
+    <!-- 부모 요소에 대한 퍼센티지 -->
+    <p style="font-size: 150%;">부모 글자의 1.5배 크기</p>
+
+    <div style="font-size: 20px;">
+        부모 텍스트
+        <!-- em은 부모 요소에 대한 배수설정 -->
+        <p style="font-size: 1.5em;">자식 텍스트</p>
+    </div>
+
+    <!-- vh : 높이에 대한 상대 크기/ vw : 너비에 대한 상대 크기 -->
+    <p style="font-size: 5vh;">디스플레이 높이에 대한 상대 크기</p>
+    <p style="font-size: 5vw;">디스플레이 너비에 대한 상대 크기</p>
+
+    <h2 style="text-align: center;">margin, border, padding에 대한 개념</h2>
+    <!-- margin : auto를 통해 가운데 정렬 수행 가능 -->
+    <!-- place-content : center를 통해 수직으로 정렬(padding)  -->
+    <!-- text-align : center를 통해 수평으로 정렬 (padding) -->
+    <div
+        style="border: 5px solid black; width: 400px; height: 200px; margin: auto; place-content: center; text-align: center;">
+        margin, border, padding 실습
+    </div>
+
+    <table border="1" style="border-collapse: collapse; margin: auto; text-align: center;  width: 400px; height: 200px;">
+        <caption>테이블A</caption>
+        <thead>
+            <tr>
+                <th>컬럽1</th>
+                <th>컬럼2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>데이터1</td>
+                <td>데이터2</td>
+            </tr>
+            <tr>
+                <td>데이터1</td>
+                <td>데이터2</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

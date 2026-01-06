@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js intro</title>
+
+    <script>
+        /*
+        function console1() {
+            // js의 출력
+            console.log("hello world");
+            // js에서 변수는 var, let, const 셋중에 하나의 키워드를 사용해서 변수 선언
+            let a = 10;
+            let b = "10";
+            let c = 20;
+            // 별도의 타입은 명시하지 않지만, 내부적으로 타입을 가지고 있지 않음 
+            console.log("a+b ", a + b); //1010
+            console.log("a+c ", a + c); //30
+        }
+        function console2() {
+            // js에 배열은 []를 사용, 문자,숫자 등 하나의 타입이 아닌 여러 타입사용 가능 
+            // js에 배열은 자바의 리스트처럼 값에 추가 제거 가능 
+            let arr = [10, "20", 30, "40"];
+            arr.push(50);
+            console.log(arr);
+            for (let i = 0; i < arr.length; i++) {
+                console.log(arr[i]);
+            }
+            arr.forEach(a => console.log(a));
+        }
+            */
+        //    10,20,30,40의 배열을 선언하고 total을 만들어서 출력하기
+
+        function console3() {
+            let arr = [10, 20, 30, 40];
+            let total = 0;
+            arr.forEach(a => total += a);
+            console.log(total);
+            /*
+                for(let i=0; i<arr.length; i++) {
+                    total += arr[i];
+                }
+                console.log(total);
+            */
+        }
+        //    팝업 창
+        let a = 10;
+        let b = "10";
+        let c = 20;
+        // 팝업 함수 : 확인 버튼을 누르기 전까지 이후 코드가 실행 안되는 특성 
+        alert(a + b);
+        alert(a + c);
+        console.log(a+c);
+
+
+    </script>
+</head>
+
+<body>
+    <h2>js 변수와 출력</h2>
+    <button onclick="console1()">console에 변수 출력하기</button>
+    <button onclick="console2()">console에 배열 출력하기</button>
+    <button onclick="console3()">console에 배열 출력하기 실습</button>
+
+
+
+
+</body>
+
+
+
+
+</html>
