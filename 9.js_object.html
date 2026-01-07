@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 객체</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script>
+        const makeObject = () => {
+            //📍객체의 특징
+            // - Java와 다르게 클래스를 정의하지 않고 생성
+            // - {key: value, key: value} : 기본 구조
+
+            //📍객체 생성방법
+            // 1) 리터럴 형식
+            let person1 = { id: 1, name: "홍길동", email: "hong@naver.com", age: 30 };
+            console.log(person1);
+
+            //📍+) 객체 접근 방법
+            // .으로 접근하여 객체 value 수정
+            person1.name = "홍길동2"
+            console.log(person1);
+            // []으로 접근하여 객체 value 수정
+            person1['email'] = "hong2@naver.com";
+            console.log(person1);
+            // .으로 객체 key와 value 추가
+            person1.password = "1234";
+            console.log(person1);
+
+            // 2) 단축속성명 방식
+            // key와 value변수값이 동일하게 사용될 때 간편하게 객체 생성
+            const name = "홍길동3"
+            const age = 32;
+            let person2 = { name: name, age: age }; // 일반객체 생성
+            console.log(person2);
+            let person3 = { name, age }; // 단축 속성명 방식
+            console.log(person3);
+
+            const obj1 = { key1: "value1", key2: "value2", key3: { a: 1, b: 1 } };
+            console.log(obj1);
+            const obj2 = { obj1 };
+            console.log(obj2);
+
+            // +) 스프레드 문법
+            // ... 객체명 또는 배열명: 객체, 배열의 요소값을 모두 꺼내오는 분법
+            const obj3 = { a: 1, b: 2 };
+            const obj4 = { ...obj3, c: 3 };
+            console.log(obj3);
+            console.log(obj4);
+
+            const arr1 = [obj3, obj4];
+            const arr2 = [...arr1, "Test"];
+            console.log(arr1);
+            console.log(arr2);
+        }
+
+        const getObject = () => {
+            //📍객체 접근
+            const p1 = { name: "홍길동", email: "hong@naver.com", age: 30 };
+            console.log(p1);
+            // 객체 개별 요소 접근1:
+            console.log(p1.name);
+
+            // 객체 개별 요소 접근2:
+            console.log(p1['name']);
+
+            //📍 Object.keys(객체명) : 객체의 키를 배열형태로 반환
+            const arr = Object.keys(p1);
+            console.log(arr);
+            for (let i = 0; i < arr.length; i++) {
+                let key = arr[i];
+                p1[key] = 10;
+            }
+            console.log(p1);
+        }
+
+        const makeArr = () => {
+            let fruits = ['사과', '배', '바나나'];
+            //📍 push() : 배열에 요소 추가
+            fruits.push("딸기");
+            console.log(fruits); // ['사과', '배', '바나나', '딸기']
+            //📍 pop() : 배열에 요소 꺼내기
+            console.log(fruits.pop()); // 딸기
+            console.log(fruits); // ['사과', '배', '바나나']
+        }
+
+        const getArr = () => {
+            let fruits = ['사과', '배', '바나나'];
+            console.log(fruits[0]); // 사과
+
+        }
+        const changeArr = () => {
+            let fruits = ['사과', '배', '바나나'];
+            fruits[0] = '포도'
+            console.log(fruits); // ['포도', '배', '바나나']
+        }
+
+        const onClickFuncBtn = () => {
+            //📍 forEach() : 
+            let fruits = ['사과', '배', '바나나'];
+            fruits.forEach(a => console.log(a));
+
+            //📍 filter() : 
+            const nums = [1, 2, 3, 4, 5, 6];
+            nums.forEach(a => console.log(a))
+            const newNums1 = nums.map(a => a * a);
+            console.log(newNums1);
+            const newNums2 = nums.filter(a => a % 2 == 0);
+            console.log(newNums2);
+
+        }
+
+        const makeObjectArr = () => {
+            // name과 age로 이루어진 객체가 3개 들어있는  arr 생성
+            const arr = [{ name: "hong", age: 30 }, { name: "lee", age: 20 }, { name: "kim", age: 18 }];
+
+            // 요구사항: email key 추가
+            // 방법1 : for + 스프레드문법
+            const newArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                let obj = arr[i];
+                let addEmailObj = { ...obj, email: `${obj.name}@naver.com` };
+                newArr[i] = addEmailObj;
+            }
+            console.log(newArr);
+
+            // 방법2 : map + 스프레드문법
+            const newArr2 = arr.map(a => { return { ...a, email: `${a.name}@naver.com` } });
+            console.log(newArr2);
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container py-3">
+        <h1 class="mb-4">JavaScript 객체</h1>
+        <section class="mb-4">
+            <h1>객체</h1>
+            <h2>객체의 특징</h2>
+            <p>Java와 다르게 클래스를 정의하지 않고 생성<br />
+                기본 구조 : <code>{key: value, key: value}</code>
+            </p>
+            <h2>객체 생성</h2>
+            <ul>
+                <li>
+                    리터럴 방식 :
+                    <pre><code>
+let person = { id: 1, name: "홍길동", email: "hong@naver.com", age: 30 };
+console.log(person1);
+                    </code></pre>
+
+                </li>
+                <li>
+                    단축속성명 방식 : key와 value변수값이 동일하게 사용될 때 간편하게 객체 생성
+                    <pre><code>
+const name = "홍길동"
+const age = 32;
+let person = { name, age };
+                    </code></pre>
+                </li>
+                <li>
+                    스프레드 문법으로 생성하는 방식
+                    <pre><code>
+const obj1 = { a: 1, b: 2 };
+const obj2 = { ...obj1, c: 3 };
+                    </code></pre>
+                </li>
+            </ul>
+            <button class="btn btn-dark" onclick="makeObject()">객체 생성 버튼(콘솔)</button>
+            <hr>
+            <h2>객체 접근</h2>
+            <ul>
+                <li><code> . </code>접근 방식:
+
+                </li>
+                <li><code> [] </code>접근 방식:
+
+                </li>
+                <pre>
+                    <code>
+const p1 = { name: "홍길동", email: "hong@naver.com", age: 30 };
+console.log(p1.name);
+console.log(p1['name']);
+                    </code>
+                </pre>
+            </ul>
+            <button class="btn btn-dark" onclick="getObject()">객체 접근 버튼(콘솔)</button>
+            <hr>
+            <h1>배열</h1>
+            <h2>배열 생성</h2>
+            <pre><code>
+const makeArr = () => {
+let fruits = ['사과', '배', '바나나'];
+//📍 push() : 배열에 요소 추가
+fruits.push("딸기");
+console.log(fruits); // ['사과', '배', '바나나', '딸기']
+//📍 pop() : 배열에 요소 꺼내기
+console.log(fruits.pop()); // 딸기
+console.log(fruits); // ['사과', '배', '바나나']
+}
+            </code></pre>
+            <button class="btn btn-dark" onclick="makeArr()">배열 생성 버튼(콘솔)</button>
+            <hr>
+            <h2>배열 접근</h2>
+            <pre><code>
+const getArr = () => {
+let fruits = ['사과', '배', '바나나'];
+console.log(fruits[0]); // 사과
+}
+            </code></pre>
+            <button class="btn btn-dark" onclick="getArr()">배열 접근 버튼(콘솔)</button>
+            <hr>
+            <h2>배열 수정</h2>
+            <pre><code>
+const changeArr = () => {
+let fruits = ['사과', '배', '바나나'];
+fruits[0] = '포도'
+console.log(fruits); // ['포도', '배', '바나나']
+}
+            </code></pre>
+            <button class="btn btn-dark" onclick="changeArr()">배열 수정 버튼(콘솔)</button>
+            <hr>
+            <h2>함수형 프로그래밍 활용</h2>
+            <ul>
+                <li>foreach</li>
+                <li>map</li>
+                <li>filter</li>
+            </ul>
+            <h2>함수형 프로그래밍</h2>
+            <button class="btn btn-dark" onclick="onClickFuncBtn()">함수형 프로그래밍 버튼(콘솔)</button>
+            <hr>
+            <h1>베열과 객체 조합</h1>
+            <h2>배열안에 객체 생성</h2>
+            <button class="btn btn-dark" onclick="makeObjectArr()">배열 내 객체 생성</button>
+        </section>
+    </div>
+</body>
+
+</html>

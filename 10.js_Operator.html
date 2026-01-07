@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <title>js operator</title>
+    <script>
+        function biggernum(a, b) {
+            let bigger = 0;
+            if (a > b) {
+                bigger = a;
+            } else {
+                bigger = b;
+            }
+
+            let bigger1 = a > b ? a : b;
+            document.getElementById("result").innerHTML = bigger1;
+        }
+
+        const compareString = () => {
+            // js에서 문자열 비교는 부등호 사용 가능 
+            //     const st1 = "abc";
+            //     const st2 = "bcd";
+            //     console.log(st1 < st2);
+        }
+
+        const converttype = () => {
+            //     let st1 = "10";
+            //     let st2 = "hello";
+            //     let num1 = Number(st1);
+            //     let num2 = Number(st2);
+            //     console.log(typeof (num1) + typeof (num2)); //num num 
+            //     num1 = String(num1);
+            //     console.log(typeof (num1) + typeof (num2)); //Str num
+            //     console.log(num2); //NaN 출력 (Not a Number)가 담김 
+
+            //     // == : 타입은 체크하지 않음 === : 타입까지 체크 
+            //     console.log(10 == 10); //true
+            //     // js에서 ==는 타입에 관계없이 안에 담긴 내용만 봄 
+            //     console.log(10 == "10"); //true
+            //     console.log(10 === 10); //true
+            //     // js에서 ===는 타입까지 보기때문에 타입이 다르면 false가 뜸 
+            //     console.log(10 === "10"); //false
+
+            let v1; //undefind가 할당 
+            let v2 = null; //null이 할당  값이 null;
+            console.log(v1);
+            console.log(v2);
+
+            console.log(v1 == v2); //true 
+            console.log(v1 === v2); //false
+
+            let p1 = { name: "hong", email: "aaa@navere.vom", nickname: null };
+            console.log(p1.nickname); //null 
+            console.log(p1.age); //undefined
+            // 성립해서  if문 안으로 들어감 
+            if (p1.age == null) {
+
+            }
+            // 성립하지 않아 if문 안으로 들어가지 않음 
+            if (p1.age === null) {
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>연산자 예시</h2>
+    <button onclick="biggernum(10,20)">삼항연산자 결과</button>
+    <p id="result">결과값</p>
+
+    <button onclick="compareString()">문자비교 결과</button>
+
+    <button onclick="converttype()">형변환</button>
+    <br>
+    <button onclick="biggernum2()" class="btn btn-dark btn-primary">삼항연산자와 형변환 활용</button>
+    <br>
+    <input type="text" id="first"> <input type="text" id="second">
+    <span id="result2">둘 중 더 큰 값</span>
+
+      <script>
+        const biggernum2 = () => {
+            // html의 요소는 기본이 문자값
+            const first = document.getElementById("first").value;
+            const second = document.getElementById("second").value;
+            const firstnum = Number(first);
+            const secondnum = Number(num);
+
+            console.log(first);
+            console.log(second);
+            let anum = first > second ? first : second;
+            alert(anum);
+
+            document.getElementById("result2").innerHTML = biggernum2;
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -2,74 +2,312 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>js intro</title>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript 소개</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script>
-        /*
-        function console1() {
-            // js의 출력
-            console.log("hello world");
-            // js에서 변수는 var, let, const 셋중에 하나의 키워드를 사용해서 변수 선언
-            let a = 10;
-            let b = "10";
-            let c = 20;
-            // 별도의 타입은 명시하지 않지만, 내부적으로 타입을 가지고 있지 않음 
-            console.log("a+b ", a + b); //1010
-            console.log("a+c ", a + c); //30
-        }
-        function console2() {
-            // js에 배열은 []를 사용, 문자,숫자 등 하나의 타입이 아닌 여러 타입사용 가능 
-            // js에 배열은 자바의 리스트처럼 값에 추가 제거 가능 
-            let arr = [10, "20", 30, "40"];
-            arr.push(50);
-            console.log(arr);
-            for (let i = 0; i < arr.length; i++) {
-                console.log(arr[i]);
-            }
-            arr.forEach(a => console.log(a));
-        }
-            */
-        //    10,20,30,40의 배열을 선언하고 total을 만들어서 출력하기
+        // 📍 console.log(): 콘솔(개발자도구 Console 탭)에 출력하는 디버깅용 함수
 
-        function console3() {
+        // 📍 alert(): 경고/알림 팝업
+        // - 확인 버튼을 누르기 전까지 다음 코드 실행이 멈추는 "동기(blocking)" 동작
+
+        // 📍 JavaScript의 특징
+        // - 타입을 선언하지 않지만(동적 타입), 런타임에 타입을 가지고 동작함, 따라서 같은 + 연산이라도 "문자열 결합" 또는 "숫자 덧셈"이 될 수 있음
+        // - Java와는 다르게 미리 컴파일 작업을 수행하지 않고 실행하는 시점에 컴파일이 일어난다. 이를 인터프리터 언어라고 함
+
+        // 📍 변수 타입별 연산 예시
+        let a = 10;     // number
+        let b = "10";   // string
+        let c = 20;     // number
+
+        // + 연산: 피연산자 중 하나가 문자열이면 문자열 결합이 될 수 있음
+        console.log("a + b ===", a + b); // "1010"
+        console.log("a + c ===", a + c); // 30
+
+        // 비교는 == 보다 === 권장
+        // - === : 타입이 다르면 무조건 false (자동 형변환 없음) 
+        // - ==  : 비교 전에 자동 형변환이 일어나 헷갈릴 수 있음
+
+        // ******************* Javascript 변수와 출력 ******************* //
+        const console1 = () => {
+            console.log("console1 이벤트 핸들러 실행");
+        };
+
+        // 📍 JavaScript 배열(Array)
+        // - []로 생성, 서로 다른 타입도 같이 담을 수 있음
+        // - 대표적인 추가/삭제 메서드(표준)
+        //   - push(value): 뒤에 추가 
+        //   - pop(): 뒤에서 꺼내며 제거 (마지막 요소 제거)
+        //   - unshift(value): 앞에 추가 
+        //   - shift(): 앞에서 꺼내며 제거
+        // - forEach(fn): 각 요소에 대해 함수를 실행(반환값은 사용하지 않음)
+        const console2 = () => {
+            let arr = [];
+            arr = ["a", 10];
+            console.log("arr === ", arr);
+
+            // 배열은 길이가 자동으로 늘어남(동적)
+            for (let i = 0; i < 5; i++) {
+                arr[i] = i;
+            }
+
+            arr.push("hello"); // 뒤에 추가 
+            console.log("arr === ", arr);
+
+            arr.forEach((v) => console.log("forEach === ", v));
+        };
+
+        // 📄 [실습] 10,20,30,40 배열의 누적합(total) 구해서 출력하기
+        const console3 = () => {
             let arr = [10, 20, 30, 40];
             let total = 0;
-            arr.forEach(a => total += a);
-            console.log(total);
-            /*
-                for(let i=0; i<arr.length; i++) {
-                    total += arr[i];
-                }
-                console.log(total);
-            */
+
+            for (let i = 0; i < arr.length; i++) {
+                total += arr[i];
+            }
+
+            // 문자열 조립은 템플릿 리터럴이 가독성이 좋음
+            // 예: `배열: ${arr.join(", ")} / 누적합: ${total}`
+            const alertMessage = `배열: ${arr.join(", ")} / 누적합 === ${total}`;
+            alert(alertMessage);
+        };
+
+        // 📍 이벤트 연결 방식 메모
+        // - 현재는 HTML의 onclick 속성으로 핸들러를 직접 연결(학습용으로 직관적)
+        // - 실무에선 보통 JS에서 addEventListener로 이벤트를 연결하는 패턴을 자주 사용
+
+        const arrFunction = () => {
+            const test = () => {
+                console.log("test 함수 실행");
+            }
+
+            let arr = [10, "20", test];
+
+            let arr2 = [10, "20", () => { console.log("리터럴 세팅 함수 실행") }];
+
+            arr[2]();
+            arr2[2]();
         }
-        //    팝업 창
-        let a = 10;
-        let b = "10";
-        let c = 20;
-        // 팝업 함수 : 확인 버튼을 누르기 전까지 이후 코드가 실행 안되는 특성 
-        alert(a + b);
-        alert(a + c);
-        console.log(a+c);
 
+        // 📍 JavaScript의 변수와 상수
+        // - var: 함수 스코프 + 호이스팅 특성으로 예측이 어려울 수 있어 요즘은 지양
+        // - let: 블록 스코프, 재할당 가능
+        // - const: 블록 스코프, 재할당 불가(단, 객체/배열 "내부 값" 변경은 가능)
 
+        const varExample = () => {
+            // 같은 변수명에 재할당, 재선언 모두 가능
+            var a = 10;
+            var a = 20;
+            console.log(a);
+        }
+
+        const letExample = () => {
+            let a = 10;
+            a = 20; // 재할당 가능
+            //let a = 30; // 재선언 불가능
+            console.log(a);
+        }
+
+        const constExample = () => {
+            const a = 10;
+            a = 10; // 재할당 불가능
+            console.log(a);
+        }
+
+        // ******************* JS를 통한 html요소 변경(DOM) ******************* //
+        const changeText1 = () => {
+            let elem = document.getElementById("change1");
+            elem.innerHTML = "hello java";
+        }
+
+        const changeText2 = () => {
+            // getElementsByClassName : 배열 리턴
+            let elems = document.getElementsByClassName("change2");
+            for (let i = 0; i < elems.length; i++) {
+                elems[i].innerHTML = `${i}번 인덱스 === hello python`;
+            }
+        }
+
+        const changeText3 = () => {
+            let elems = document.getElementsByTagName("li");
+            for (let i = 0; i < elems.length; i++) {
+                elems[i].innerHTML = `${i}번 인덱스 === hello C++`;
+            }
+        }
     </script>
 </head>
 
 <body>
-    <h2>js 변수와 출력</h2>
-    <button onclick="console1()">console에 변수 출력하기</button>
-    <button onclick="console2()">console에 배열 출력하기</button>
-    <button onclick="console3()">console에 배열 출력하기 실습</button>
+    <div class="container py-3">
+        <h1 class="mb-4">JavaScript 소개 (요약 + 실습)</h1>
 
+        <!-- ===================== 1) 변수/출력 ===================== -->
+        <section class="mb-4">
+            <h2>1) 변수와 출력</h2>
 
+            <pre class="bg-light p-2 rounded border"><code>
+// console.log: 개발자도구 Console에 출력
+// alert: 알림 팝업(확인 전까지 다음 코드가 멈춤)
 
+let a = 10;     // number
+let b = "10";   // string
+let c = 20;     // number
 
+console.log("a + b ===", a + b); // "1010" (문자열 결합)
+console.log("a + c ===", a + c); // 30     (숫자 덧셈)
+
+// 비교는 == 보다 === 권장
+// === : 타입까지 비교(자동 형변환 없음)
+// ==  : 자동 형변환이 개입할 수 있음
+      </code></pre>
+
+            <button class="btn btn-dark my-1" onclick="console1()">console1 실행</button>
+        </section>
+
+        <!-- ===================== 2) 배열 ===================== -->
+        <section class="mb-4">
+            <h2>2) 배열(Array)</h2>
+
+            <pre class="bg-light p-2 rounded border"><code>
+// 배열은 []로 생성, 다른 타입도 섞어 담을 수 있음
+// push/pop: 뒤에 추가/제거
+// unshift/shift: 앞에 추가/제거
+// forEach: 각 요소 순회
+
+const console2 = () => {
+  let arr = ["a", 10];
+  console.log("arr ===", arr);
+
+  for (let i = 0; i &lt; 5; i++) arr[i] = i;
+
+  arr.push("hello");
+  console.log("arr(push 후) ===", arr);
+
+  arr.forEach(v => console.log("forEach ===", v));
+}
+      </code></pre>
+
+            <button class="btn btn-dark my-1" onclick="console2()">console2 실행</button>
+        </section>
+
+        <!-- ===================== 3) 배열 누적합 ===================== -->
+        <section class="mb-4">
+            <h2>3) 배열 누적합(반복문)</h2>
+
+            <pre class="bg-light p-2 rounded border"><code>
+const console3 = () => {
+  const arr = [10, 20, 30, 40];
+  let total = 0;
+
+  for (let i = 0; i &lt; arr.length; i++) {
+    total += arr[i];
+  }
+
+  alert(`배열: ${arr.join(", ")} / 누적합 === ${total}`);
+}
+      </code></pre>
+
+            <button class="btn btn-dark my-1" onclick="console3()">console3 실행</button>
+        </section>
+
+        <!-- ===================== 4) 배열에 함수 넣기 ===================== -->
+        <section class="mb-4">
+            <h2>4) 배열에 함수 넣기</h2>
+
+            <pre class="bg-light p-2 rounded border"><code>
+const arrFunction = () => {
+  const test = () => console.log("test 함수 실행");
+
+  const arr = [10, "20", test];
+  const arr2 = [10, "20", () => console.log("리터럴 세팅 함수 실행")];
+
+  arr[2]();   // test 실행
+  arr2[2]();  // 리터럴 함수 실행
+}
+      </code></pre>
+
+            <button class="btn btn-dark my-1" onclick="arrFunction()">arrFunction 실행</button>
+        </section>
+
+        <!-- ===================== 5) var/let/const ===================== -->
+        <section class="mb-4">
+            <h2>5) var / let / const</h2>
+
+            <pre class="bg-light p-2 rounded border"><code>
+// var: 함수 스코프(재선언 가능) → 요즘은 지양하는 편
+const varExample = () => {
+  var a = 10;
+  var a = 20; // 재선언 가능
+  console.log("var a ===", a);
+}
+
+// let: 블록 스코프, 재할당 가능(재선언 불가)
+const letExample = () => {
+  let a = 10;
+  a = 20;
+  console.log("let a ===", a);
+}
+
+// const: 블록 스코프, 재할당 불가
+const constExample = () => {
+  const a = 10;
+  // a = 20; // 재할당 불가(에러)
+  console.log("const a ===", a);
+}
+      </code></pre>
+
+            <button class="btn btn-dark my-1" onclick="varExample()">var 예제</button>
+            <button class="btn btn-dark my-1" onclick="letExample()">let 예제</button>
+            <button class="btn btn-dark my-1" onclick="constExample()">const 예제</button>
+        </section>
+
+        <!-- ===================== 6) DOM 변경 ===================== -->
+        <section class="mb-4">
+            <h2>6) DOM 요소 변경</h2>
+
+            <pre class="bg-light p-2 rounded border"><code>
+// getElementById: id로 1개 선택
+const changeText1 = () => {
+  const elem = document.getElementById("change1");
+  elem.innerHTML = "hello java";
+}
+
+// getElementsByClassName: class로 여러 개 선택(HTMLCollection)
+const changeText2 = () => {
+  const elems = document.getElementsByClassName("change2");
+  for (let i = 0; i &lt; elems.length; i++) {
+    elems[i].innerHTML = `${i}번 인덱스 === hello python`;
+  }
+}
+
+// getElementsByTagName: 태그로 여러 개 선택
+const changeText3 = () => {
+  const elems = document.getElementsByTagName("li");
+  for (let i = 0; i &lt; elems.length; i++) {
+    elems[i].innerHTML = `${i}번 인덱스 === hello C++`;
+  }
+}
+      </code></pre>
+
+            <button class="btn btn-dark my-1" onclick="changeText1()">Id로 변경</button>
+            <p id="change1">hello world</p>
+
+            <button class="btn btn-dark my-1" onclick="changeText2()">class로 변경</button>
+            <p class="change2">hello world</p>
+            <p class="change2">hello world</p>
+            <p class="change2">hello world</p>
+            <p class="change2">hello world</p>
+
+            <button class="btn btn-dark my-1" onclick="changeText3()">tag로 변경</button>
+            <ul>
+                <li>hello world</li>
+                <li>hello world</li>
+                <li>hello world</li>
+            </ul>
+        </section>
+    </div>
 </body>
-
-
 
 
 </html>
