@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js json</title>
+    <script>
+        // 파싱
+        const parsing1 = () => {
+            const jsondata = '{"id" :1 , "name"  : "hong1", "email" : "aaa@naver.com"}';
+            const obj1 = JSON.parse(jsondata);
+            console.log(obj1);
+        }
+        // 직렬화
+        const stringify = () => {
+            const obj1 = { id: 1, name: "hong1", email: "aaa@naver.com" };
+            const jsondata = JSON.stringify(obj1);
+            console.log(obj1);
+            console.log(jsondata);
+        }
+
+        const parsing2 = () => {
+            const jsondata = '{"id" :1 , "name"  : "hong1", "email" : "aaa@naver.com"}';
+            const obj1 = JSON.parse(jsondata);
+
+            document.getElementById("id").innerHTML = obj1.id;
+            document.getElementById("name").innerHTML = obj1.name;
+            document.getElementById("email").innerHTML = obj1.email;
+
+        }
+
+        const addHtml = () => {
+            let div1 = document.getElementById("target");
+            div1.innerHTML += "<br> <input type= 'text'>"
+        }
+        const parsing3 = () => {
+            // json data 선언 : [{}, ... ];
+            const jsonData = '[{"id":0, "name": "홍길동1", "email": "hong1@nvaer.com"}, {"id":1, "name": "홍길동2", "email": "hong2@nvaer.com"}, {"id":2, "name": "홍길동3", "email": "hong3@nvaer.com"}, {"id":3, "name": "홍길동4", "email": "hong4@nvaer.com"}]';
+
+            // json data를 객체로 파싱 
+            const objs = JSON.parse(jsonData);
+            // for문을 통해 html 동적으로 세팅 
+            for (let i = 0; i < objs.length; i++) {
+                const html = "<tr><td>" + objs[i].id + "</td><td>" + objs[i].name + "</td><td>" + objs[i].email + "</td></tr>";
+                // tbody라는 특정한 id값을 찾아서 요소에 html에 요소 추가 
+                document.getElementById("tbodyid").innerHTML += html;
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- 조회(get, 테이블)는 파싱 , 등록(post, form태그)은 직렬화 -->
+    <h2>json 처리 기본</h2>
+    <button onclick="parsing1()">json 파싱</button>
+    <br>
+    <button onclick="stringify()">json 데이터 생성(직렬화)</button>
+    <hr>
+    <h2>테이블 데이터</h2>
+    <button onclick="parsing2()">테이블 데이터 파싱</button>
+
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="id"></td>
+                <td id="name"></td>
+                <td id="email"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+
+    <h2>html요소 동적으로 세팅</h2>
+    <button onclick="addHtml()">항목추가</button>
+    <div id="target">
+        <input type="text">
+    </div>
+
+
+
+    <h1>n개의 데이터 테이블에 세팅</h1>
+    <button onclick="parsing3()">테이블 데이터 파싱</button>
+
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyid">
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <form action="">
+        <input type="text" id>
+        <input type="text">
+        <button onclick="send()"></button>
+        <script>
+            function datasend() {
+                const data1 = document.getElementById
+                const data2 = document.getElementById
+                const obj1 = { name: data1, email: data2 };
+                JSON.stringify(obj1);
+            }
+        </script>
+        
+    </form> -->
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_func_prac</title>
+    <script>
+        const calculator = () => {
+            const a = Number(document.getElementById("a").value);
+            const b = Number(document.getElementById("b").value);
+            const cal = document.getElementById("calculator").value;
+            let result = 0;
+            if (cal == "plus") {
+                result = a + b;
+            } else if (cal == "minus") {
+                result = a - b;
+            } else if (cal == "devide") {
+                result = a / b;
+            } else if (cal == "multifly") {
+                result = a * b;
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- select박스를 통해 덧셈/밸셈/나눗셈 선택 -->
+    <!-- input박스 2개 두고 입력을 받아 연산 실행 -->
+
+    <h2>계산기</h2>
+    <select id="calculator">
+        <option value="plus">덧셈</option>
+        <option value="minus">뺄셈</option>
+        <option value="devide">나눗셈</option>
+        <option value="multifly">곱셈</option>
+    </select>
+    <br>
+    <input type="text" id="a"><input type="text" id="b">
+    <button onclick="calculator()">실행</button>
+    <br>
+    <p id="result">결과값</p>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container py-3">
+        <section class="mb-4">
+            <h1>AJAX</h1>
+            <p>Ajax요청(<code>JQuery</code>, <code>Axios</code>)은 비동기적으로 실행됨</p>
+        </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        const dataRequest = () => {
+            $(document).ready(() => {
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/posts/1",
+                    type: "GET",
+                    dataType: "json",
+                    success: (result) => {
+                        // <!-- 만약 html요청울 통해 받은 응답을 활용해 새로운 ㅇ요청을 보냐여 한다면 
+                        //    -->
+                        // <!-- 1. 서버 api 호출 => 비동기 함수 
+                        //      2. 서버 응답값을 가지고 추가 작업 -->
+                       
+                    },
+                    error: (error) => {
+                    },
+                })
+            });
+        }
+
+        dataRequest();
+        console.log("실행순서 1");
+    </script>
+</body>
+
+</html>
