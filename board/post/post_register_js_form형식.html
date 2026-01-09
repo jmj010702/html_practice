@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>post_register</title>
+</head>
+
+<body>
+    <nav class="navbar bg-dark navbar-dark navbar-expand-lg">
+        <a href="../post/post_register_js_form형식.html" class="navbar-brand mx-auto">글쓰기 서비스</a>
+        <ul class="navbar-nav">
+            <li class="nav-item"> <a class="nav-link" href="../post/post_list.html">게시글 목록</a></li>
+
+    </nav>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="content">내용</label>
+                <textarea id="contents" name="contents" rows="10" cols="39" style="resize: none;"
+                    placeholder="내용을 입력하시오." class="form-control"></textarea>
+            </div>
+            <button type="button" onclick="writepost()" class="btn btn-dark float-end">작성하기</button>
+        </form>
+    </div>
+</body>
+<script>
+    async function writepost1() {
+        try {
+            const titlevalue = document.getElementById("title").value;
+            const contentsvalue = document.getElementById("contents").value;
+            const data = { title: titlevalue, contents: contentsvalue };
+            await axios.post("http://localhost:8081/post/register1/aaa", data);
+            window.location.href = "../post/post_list.html";
+        } catch (error) {
+            alert("예상치 못한 에러가 발생했습니다.");
+            console.log(error);
+        }
+    }
+
+
+    const writepost = async () => {
+        try {
+            const titlevalue = document.getElementById("title").value;
+            const contentsvalue = document.getElementById("contents").value;
+            const data = new FormData();
+
+            // key = value && key == value
+            // formdata를 통한 형식 : title=hello&&contents =helloworld;
+            data.append("title", titlevalue);
+            data.append("contents", contentsvalue);
+            // data.append("image", imagevalue);
+            // const data = { title: titlevalue, contents: contentsvalue };
+            // js를 통한 객체 조립 후 axios post전송시 json처리
+            // js를 통해 formdata클래스를 통해 데이터 조립시 url인코딩(또는 multipart/form-data)로 처리한다
+            await axios.post("http://localhost:8081/post/register1/", data);
+            window.location.href = "../post/post_list.html";
+        } catch (error) {
+            alert("예상치 못한 에러가 발생했습니다");
+            console.log(error);
+        }
+    }
+
+
+</script>
+
+</html>

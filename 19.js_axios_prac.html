@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js axios</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <button onclick="dataRequest()" id="id">단건 데이터 조회</button>
+    <script>
+        async function dataRequest() {
+            const result1 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+            console.log(result1.data);
+            document.getElementById("id").innerHTML = result1.data;
+        }
+    </script>
+
+    <br>
+    <button onclick="dataRequest1()" id="id1">리스트 데이터 출력</button>
+    <script>
+        async function dataRequest1() {
+            const result2 = await axios.get("https://jsonplaceholder.typicode.com/posts");
+            console.log(result2.data);
+            document.getElementById("id1").innerHTML = result1.data;
+
+        }
+    </script>
+</body>
+
+</html>
+<hr>
+<p>
+서버에서 프론트로 응답을 줄때는 왠만하면 99% json // response가 중요
+프론트에서 서버로 등록할때는 json또는 multiform/data를 쓰는 경우가 있는데 왠만하면 json으로 등록하는게 좋음
+서버에서도 json으로 받을 수 있게 해야함 등록 완성 시 ok응답 
+ //request가 중요
+</p>
+<br>
+<p>
+1. js로 데이터 조립
+1-1) json 조립
+1-2) url인코딩 또는 multipart/form-data
+<br>
+2.html로 데이터 조립
+2-1) url인코딩 또는 multipart/form-data
+</p>
+<br>
+<p>
+    1.서버 : aws -ec2
+    <br>
+    2.front (.html) : 사용자 컴퓨터에서 실행되기 때문에 html파일만 올려놓으면 됨 
+    <hr>
+    크롬 ui에서 해당 도메인으로 이동하면 윈도우 탐색기를 열어서 aws에 s3-스토리지에 올라와 있는 html파일을 사용자 화면에 전송 <br>
+    파일에 있는 script 동작 -> ec2에 올라와 있는 java+spring파일을 통해 동작  
+</p>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>post_register</title>
+</head>
+
+<body>
+    <nav class="navbar bg-dark navbar-dark navbar-expand-lg">
+        <a href="../post/post_register_js_json.html" class="navbar-brand mx-auto">글쓰기 서비스</a>
+        <ul class="navbar-nav">
+            <li class="nav-item"> <a class="nav-link" href="../post/post_list.html">게시글 목록</a></li>
+
+    </nav>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="content">내용</label>
+                <textarea id="contents" name="contents" rows="10" cols="39" style="resize: none;"
+                    placeholder="내용을 입력하시오." class="form-control"></textarea>
+            </div>
+            <button type="button" onclick="writepost()" class="btn btn-dark float-end">작성하기</button>
+        </form>
+    </div>
+</body>
+<script>
+    async function writepost1() {
+        try {
+            const titlevalue = document.getElementById("title").value;
+            const contentsvalue = document.getElementById("contents").value;
+            const data = { title: titlevalue, contents: contentsvalue };
+            await axios.post("http://localhost:8081/post/register1/aaa", data);
+            window.location.href = "../post/post_list.html";
+        } catch (error) {
+            alert("예상치 못한 에러가 발생했습니다.");
+            console.log(error);
+        }
+    }
+
+
+    const writepost = async () => {
+        // 빈번히 에러가 날 수도 있는 서버api호출 부분을 try catch
+        // 예의 처리를 통해 성공하면 리다이렉트 실패하면 팝업창을 통해 안내 
+        try {
+            const titlevalue = document.getElementById("title").value;
+            const contentsvalue = document.getElementById("contents").value;
+            const data = { title: titlevalue, contents: contentsvalue };
+            //  axios의 post함수를 js의 객체를 json으로 자동형변환
+            await axios.post("http://ec2주소:8081/post/register1", data);
+            window.location.href = "http://mybuket-board-seoul.s3.ap-northeast-2.amazonaws.com/post_list.html";
+        } catch (error) {
+            alert("예상치 못한 에러가 발생했습니다");
+            console.log(error);
+        }
+    }
+
+
+</script>
+
+</html>

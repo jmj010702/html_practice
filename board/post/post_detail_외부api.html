@@ -10,12 +10,12 @@
     <script>
         async function search() {
             const serid1 = document.getElementById("postid").value;
-            const result = await axios.get("http://localhost:8081/post/detail/" + serid1);
+            const result = await axios.get("https://jsonplaceholder.typicode.com/posts/" + serid1);
             const obj1 = result.data;
             document.getElementById("id").innerHTML = obj1.id;
             document.getElementById("title").innerHTML = obj1.title;
-            document.getElementById("contents").innerHTML = obj1.contents;
-
+            document.getElementById("body").innerHTML = obj1.body;
+            document.getElementById("userId").innerHTML = obj1.userId;
         }
     </script>
 
@@ -34,32 +34,24 @@
     </nav>
     <div class="container">
         <h3>게시글 상세조회</h3>
-        <!-- <input type="text" id="postid"> -->
-        <input id="postid">
-        <!-- <button onclick="search()" class="btn btn-primary"> 게시글 단건 조회</button> -->
+        <input type="text" id="postid">
         <button onclick="search()" class="btn btn-primary"> 게시글 단건 조회</button>
-        <script>
-            document.getElementById("postid").addEventListener("keydown", function (e) {
-                if (e.key == "Enter") {
-                    search();
-                } else if (e.key == "") {
-                    search();
-                }
-            });
-        </script>
+
         <table class="table">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>제목</th>
                     <th>본문</th>
+                    <th>유저 ID</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td id="id" onclick=""></td>
+                    <td id="id"></td>
                     <td id="title"></td>
-                    <td id="contents"></td>
+                    <td id="body"></td>
+                    <td id="userId"></td>
                 </tr>
 
             </tbody>

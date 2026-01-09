@@ -20,11 +20,11 @@
                 <a href="../author/author_register.html" class="nav-link">회원가입</a>
             </li>
         </ul>
-    </nav>
+    </nav>  
     <div class="container">
         <h3>게시글 목록</h3>
         <div class="float-end" style="margin-right: 100px;">
-            <a href="../post/post_register_js_json.html" class="btn btn-primary"> 글쓰기
+            <a href="../post/post_register.html" class="btn btn-primary"> 글쓰기
 
             </a>
         </div>
@@ -34,6 +34,7 @@
                     <th>ID</th>
                     <th>제목</th>
                     <!-- <th>본문</th> -->
+                    <th>글쓴이ID</th>
                 </tr>
             </thead>
             <tbody id="tbodyId">
@@ -44,7 +45,7 @@
 
     <script>
         async function serverdata() {
-            const jsondata = await axios.get("http://ec2주소:8081/post/list");
+            const jsondata = await axios.get("https://jsonplaceholder.typicode.com/posts");
             const objs = jsondata.data;
             // for (let i = 0; i < objs.length; i++) {
             //     const html = "<tr><td>" + objs[i].id + "</td><td>"
@@ -60,9 +61,9 @@
             objs.forEach(obj => {
                 const html =
                     "<tr><td>" + obj.id + "</td><td>"
-                    + obj.title +
+                    + obj.title + "</td><td>"
                     // + obj.body + "</td><td>"
-                    "</td></tr>";
+                    + obj.userId + "</td></tr>";
 
                 console.log(html);
                 document.getElementById("tbodyId").innerHTML += html;
@@ -70,11 +71,6 @@
 
         }
         serverdata();
-    </script>
-    <script>
-        const clickdata = (id) => {
-
-        }
     </script>
 </body>
 

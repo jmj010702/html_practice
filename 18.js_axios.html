@@ -9,22 +9,28 @@
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script>
-        async function dataRequest() {
-            // axios는 서버 api요청에서 가장 많이 사용하는 라이브러리 
-            // axios는 비동기 함수이고 서버 응답 json을   객체로 파싱해준다
-            const result1 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
-            console.log("result1");
-            // axios를 통해 body(json) 데이터를 얻기 위해서는 .data를 통해 객체 추출
-            console.log(result1.data);
+        // async function dataRequest() {
+        //     // axios는 서버 api요청에서 가장 많이 사용하는 라이브러리 
+        //     // axios는 비동기 함수이고 서버 응답 json을   객체로 파싱해준다
+        //     const result1 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+        //     console.log("result1");
+        //     // axios를 통해 body(json) 데이터를 얻기 위해서는 .data를 통해 객체 추출
+        //     console.log(result1.data);
 
-            const result2 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
-            console.log("result2");
-            console.log(result2.data);
-            const result3 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
-            console.log("result3");
-            console.log(result3.data);
+        //     const result2 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+        //     console.log("result2");
+        //     console.log(result2.data);
+        //     const result3 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+        //     console.log("result3");
+        //     console.log(result3.data);
+
+
+        // }
+
+        async function data() {
+            const result5 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+            console.log(result5.data);
         }
         dataRequest();
         console.log("a");
